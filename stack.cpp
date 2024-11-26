@@ -85,6 +85,30 @@ public:
     int pop(int &n);
 
     friend void veiwContent(stack &s);
+
+
+    stack& operator= ( stack & c){
+
+	 if(this != &c){
+
+	  top=c.top;
+
+	  size = c.size;
+
+	  delete [] ptr;
+
+	  ptr = new int[size];
+
+	  for(int i=0 ; i <top;i++){
+
+		  ptr[i] = c.ptr[i];
+
+	  }
+
+	  }
+	return *this;
+
+	 }
 };
 
 void main(void)
