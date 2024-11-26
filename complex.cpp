@@ -97,19 +97,21 @@ public:
         return *this;
     }
 
-     int operator== (complex & c){
+    int operator==(complex &c)
+    {
 
+        if ((real == c.real) && (imag == c.imag))
 
-		 if((real==c.real)&&(imag==c.imag))
+            return 1;
 
-		 return 1;
+        return 0;
+    }
 
-	   return 0;
+    operator float()
+    {
 
-
-
-	   }
-
+        return real;
+    }
 
     friend complex operator+(float f, complex &c);
 };
@@ -181,11 +183,17 @@ void main(void)
 
     com2.print();
 
-    cout<<"c1 equals to c3 ?" <<(com1==com3)<<endl;
+    cout << "c1 equals to c3 ?" << (com1 == com3) << endl;
 
-	 if(!(com1==com2))
+    if (!(com1 == com2))
 
-	   cout<<"com1 is not equal to com2"<<endl;
+        cout << "com1 is not equal to com2" << endl;
+
+    cout << "The float of com1 " << float(com1) << endl;
+
+    float f = (float)com2;
+
+    cout << "The casting of com2 is :" << f << endl;
 
     getch();
 }
