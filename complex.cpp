@@ -38,6 +38,26 @@ public:
     void setAll(float r, float i);
 
     void print();
+
+    complex operator+ (complex & c){
+
+
+	  	   complex temp (real+c.real,imag+c.imag);
+
+		   return temp;
+
+	   }
+
+	   complex operator+ (float f){
+
+		complex temp (real+f , imag);
+
+		return temp;
+
+
+	   }
+
+         friend complex operator + (float f , complex & c);
 };
 
 complex add(complex c1, complex c2);
@@ -56,6 +76,34 @@ void main(void)
     resultComp.print();
     resultComp = myComp1.sub(myComp2);
     resultComp.print();
+
+     complex com1,com3;
+
+  complex com2(5,4);
+
+  com1.setAll(7,2);
+
+  com3.setAll();
+
+  com3 = com1.add(com2);
+
+  com3.print();
+
+  com3 = com1.sub(com2);
+
+  com3.print();
+
+  com3= com1+com2;
+
+  com3.print();
+
+  com3= com1 +13.5;
+
+  com3.print();
+
+  com3 = 6.5+com2;
+
+  com3.print();
     getch();
 }
 
