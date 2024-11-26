@@ -52,6 +52,22 @@ public:
         cout << "\n this is the one parameter constructor" << endl;
     }
 
+    stack(stack &s)
+    {
+
+        top = s.top;
+
+        size = s.size;
+
+        ptr = new int[size];
+
+        counter++;
+
+        for (int i = 0; i < top; i++)
+
+            ptr[i] = s.ptr[i];
+    };
+
     ~stack()
     {
 
@@ -123,6 +139,25 @@ void main(void)
     s1.push(6);
 
     veiwContent(s1);
+
+    s2 = s1;
+
+    s2.pop(n);
+
+    cout << "\n"
+         << n << endl;
+
+    s1.pop(n);
+
+    cout << n << endl;
+
+    stack s3(s1);
+
+    cout << "\n The number of objects created = " << stack ::getCounter();
+
+    veiwContent(s3);
+
+    veiwContent(s2);
     getch();
 }
 
