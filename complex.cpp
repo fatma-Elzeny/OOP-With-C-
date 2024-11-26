@@ -26,6 +26,10 @@ public:
     float getReal();
 
     float getImag();
+    
+    complex add (complex c1);
+
+	complex sub (complex c1);
 
     void print();
 };
@@ -145,3 +149,31 @@ complex substract(complex c1, complex c2)
 
     return temp;
 }
+complex complex :: add (complex c1){
+
+
+
+	 complex temp ;
+
+	 temp.real=this->real+c1.real;
+
+	 temp.imag=this->imag+c1.imag;
+
+
+	 return temp;
+
+   }
+
+	 complex complex :: sub (complex c1 ){
+
+
+
+	 complex temp ;
+
+		 temp.real=this->real-c1.real;
+
+		 temp.imag=this->imag-c1.imag;
+
+	 return temp;
+
+   }
