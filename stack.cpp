@@ -14,8 +14,8 @@ class stack
 		 int size ;
 
 		 int *ptr;
-
-		
+         
+         static int counter;
 
 
   public :
@@ -25,7 +25,14 @@ class stack
 
 	  int isEmpty();
 
-	
+	  static int getCounter(){
+
+
+		return counter;
+
+
+
+	  }
 	  stack(){
 
 		 top=0;
@@ -34,6 +41,7 @@ class stack
 
 		 ptr= new int [size];
 
+         counter++;
 
 		 cout<<"\n this is the default constructor"<<endl;
 
@@ -51,8 +59,8 @@ class stack
 
 		 ptr= new int [size];
 
-		
-
+        counter++;		
+          
 		 cout<<"\n this is the one parameter constructor"<<endl;
 
 
@@ -66,7 +74,7 @@ class stack
 
 	  size=0;
 
-	  
+	  counter--;
 
 		 cout<<"\n this is the destructor"<<endl;
 
@@ -86,7 +94,8 @@ void main(void){
 
 
    clrscr();
-
+ 
+ cout<<"\n The number of objects created = "<<stack :: getCounter();
  stack s1(10);
 
    stack s2(7);
@@ -99,12 +108,12 @@ void main(void){
 
 
 
-
+cout<<"\n The number of objects created = "<<stack :: getCounter();
 
 
   if(s1.pop(num)){
 
-				 r
+				 
 	 cout<<num<<endl;
 
 
