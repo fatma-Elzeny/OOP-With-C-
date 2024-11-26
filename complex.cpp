@@ -77,28 +77,39 @@ public:
         return temp;
     }
 
-     complex& operator= (complex & c ){
+    complex &operator=(complex &c)
+    {
+
+        real = c.real;
+
+        imag = c.imag;
+
+        return *this;
+    }
+
+    complex &operator+=(complex &c)
+    {
+
+        real += c.real;
+
+        imag += c.imag;
+
+        return *this;
+    }
+
+     int operator== (complex & c){
 
 
-		real = c.real;
+		 if((real==c.real)&&(imag==c.imag))
 
-		imag = c.imag;
+		 return 1;
 
-		return *this;
+	   return 0;
+
 
 
 	   }
 
-	   complex& operator+= (complex & c){
-
-
-		 real+=c.real;
-
-		 imag+=c.imag;
-
-		 return *this;
-
-	   }
 
     friend complex operator+(float f, complex &c);
 };
@@ -156,20 +167,25 @@ void main(void)
 
     com3.print();
 
-    com3 = com1 ;
+    com3 = com1;
 
-  com3.print();
+    com3.print();
 
-  com2 = com3 = com1;
+    com2 = com3 = com1;
 
-  com3.print();
+    com3.print();
 
-  com2.print();
+    com2.print();
 
-  com2+=com1;
+    com2 += com1;
 
-  com2.print();
+    com2.print();
 
+    cout<<"c1 equals to c3 ?" <<(com1==com3)<<endl;
+
+	 if(!(com1==com2))
+
+	   cout<<"com1 is not equal to com2"<<endl;
 
     getch();
 }
