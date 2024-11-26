@@ -55,27 +55,48 @@ public:
         return temp;
     }
 
+    complex &operator++()
+    {
 
-     complex & operator++ (){
+        real++;
 
-		 real++;
+        imag++;
 
-		 imag++;
+        return *this;
+    }
 
-		 return *this;
+    complex operator++(int dumy)
+    {
+
+        complex temp(*this);
+
+        real++;
+
+        imag++;
+
+        return temp;
+    }
+
+     complex& operator= (complex & c ){
+
+
+		real = c.real;
+
+		imag = c.imag;
+
+		return *this;
 
 
 	   }
 
-		complex operator++ (int dumy){
+	   complex& operator+= (complex & c){
 
-		 complex temp (*this);
 
-		 real++;
+		 real+=c.real;
 
-		 imag++;
+		 imag+=c.imag;
 
-		 return temp;
+		 return *this;
 
 	   }
 
@@ -129,11 +150,26 @@ void main(void)
 
     com3 = com1++;
 
+    com3.print();
+
+    com3 = ++com2;
+
+    com3.print();
+
+    com3 = com1 ;
+
   com3.print();
 
-  com3 = ++com2;
+  com2 = com3 = com1;
 
   com3.print();
+
+  com2.print();
+
+  com2+=com1;
+
+  com2.print();
+
 
     getch();
 }
