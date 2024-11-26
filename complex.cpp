@@ -39,25 +39,47 @@ public:
 
     void print();
 
-    complex operator+ (complex & c){
+    complex operator+(complex &c)
+    {
+
+        complex temp(real + c.real, imag + c.imag);
+
+        return temp;
+    }
+
+    complex operator+(float f)
+    {
+
+        complex temp(real + f, imag);
+
+        return temp;
+    }
 
 
-	  	   complex temp (real+c.real,imag+c.imag);
+     complex & operator++ (){
 
-		   return temp;
+		 real++;
+
+		 imag++;
+
+		 return *this;
+
 
 	   }
 
-	   complex operator+ (float f){
+		complex operator++ (int dumy){
 
-		complex temp (real+f , imag);
+		 complex temp (*this);
 
-		return temp;
+		 real++;
 
+		 imag++;
+
+		 return temp;
 
 	   }
 
-         friend complex operator + (float f , complex & c);
+    friend complex operator+(float f, complex &c);
 };
 
 complex add(complex c1, complex c2);
@@ -77,33 +99,42 @@ void main(void)
     resultComp = myComp1.sub(myComp2);
     resultComp.print();
 
-     complex com1,com3;
+    complex com1, com3;
 
-  complex com2(5,4);
+    complex com2(5, 4);
 
-  com1.setAll(7,2);
+    com1.setAll(7, 2);
 
-  com3.setAll();
+    com3.setAll();
 
-  com3 = com1.add(com2);
+    com3 = com1.add(com2);
+
+    com3.print();
+
+    com3 = com1.sub(com2);
+
+    com3.print();
+
+    com3 = com1 + com2;
+
+    com3.print();
+
+    com3 = com1 + 13.5;
+
+    com3.print();
+
+    com3 = 6.5 + com2;
+
+    com3.print();
+
+    com3 = com1++;
 
   com3.print();
 
-  com3 = com1.sub(com2);
+  com3 = ++com2;
 
   com3.print();
 
-  com3= com1+com2;
-
-  com3.print();
-
-  com3= com1 +13.5;
-
-  com3.print();
-
-  com3 = 6.5+com2;
-
-  com3.print();
     getch();
 }
 
