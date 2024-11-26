@@ -2,203 +2,176 @@
 
 #include <conio.h>
 
-
-
 class stack
 
 {
-  private :
+private:
+    int top;
 
-		 int top ;
+    int size;
 
-		 int size ;
+    int *ptr;
 
-		 int *ptr;
-         
-         static int counter;
+    static int counter;
 
+public:
+    int isFull();
 
-  public :
+    int isEmpty();
 
+    static int getCounter()
+    {
 
-	  int isFull();
+        return counter;
+    }
+    stack()
+    {
 
-	  int isEmpty();
+        top = 0;
 
-	  static int getCounter(){
+        size = 10;
 
+        ptr = new int[size];
 
-		return counter;
+        counter++;
 
+        cout << "\n this is the default constructor" << endl;
+    }
 
+    stack(int n)
+    {
 
-	  }
-	  stack(){
+        top = 0;
 
-		 top=0;
+        size = n;
 
-		 size =10;
+        ptr = new int[size];
 
-		 ptr= new int [size];
+        counter++;
 
-         counter++;
+        cout << "\n this is the one parameter constructor" << endl;
+    }
 
-		 cout<<"\n this is the default constructor"<<endl;
+    ~stack()
+    {
 
+        delete[] ptr;
 
+        size = 0;
 
-	  }
+        counter--;
 
+        cout << "\n this is the destructor" << endl;
+    }
 
+    int push(int n);
 
-	  stack(int n){
+    int pop(int &n);
 
-		 top=0;
+    friend void veiwContent(stack &s);
+};
 
-		 size =n;
+void main(void)
+{
 
-		 ptr= new int [size];
+    clrscr();
 
-        counter++;		
-          
-		 cout<<"\n this is the one parameter constructor"<<endl;
+    cout << "\n The number of objects created = " << stack ::getCounter();
+    stack s1(10);
 
+    stack s2(7);
 
+    s1.push(37);
 
-	  }
+    s1.push(-12);
 
-	 ~stack(){
+    s1.push(26);
 
+    veiwContent(s1);
+    cout << "\n The number of objects created = " << stack ::getCounter();
 
-	  delete []ptr;
+    if (s1.pop(num))
+    {
 
-	  size=0;
+        cout << num << endl;
+    }
 
-	  counter--;
+    if (s1.pop(num))
+    {
 
-		 cout<<"\n this is the destructor"<<endl;
+        cout << num << endl;
+    }
 
+    if (s1.pop(num))
+    {
 
-	 }
+        cout << num << endl;
+    }
+    else
+        cout << "\n The stack is empty";
 
+    cout << "\n The number of objects created = " << stack ::getCounter();
 
-	 int push (int n);
+    stack s2;
 
-	 int pop (int &n);
+    veiwContent(s2);
 
-	 
-	 };
+    cout << "\n The number of objects created = " << stack ::getCounter();
 
+    s1.push(7);
 
-void main(void){
+    s1.push(6);
 
-
-   clrscr();
- 
- cout<<"\n The number of objects created = "<<stack :: getCounter();
- stack s1(10);
-
-   stack s2(7);
-
-   s1.push(37);
-
-   s1.push(-12);
-
-   s1.push(26);
-
-
-
-cout<<"\n The number of objects created = "<<stack :: getCounter();
-
-
-  if(s1.pop(num)){
-
-				 
-	 cout<<num<<endl;
-
-
-   }
-
-
-   if(s1.pop(num)){
-
-
-	 cout<<num<<endl;
-
-
-   }
-
-
-   if(s1.pop(num)){
-
-
-	 cout<<num<<endl;
-
-
-   }else cout<<"\n The stack is empty";
-
-
-
-   getch();
-
-
+    veiwContent(s1);
+    getch();
 }
 
+int stack ::isFull()
+{
 
- int stack ::isFull(){
+    return (top == size);
+}
 
+int stack ::isEmpty()
+{
 
+    return (top == 0);
+}
 
-	return (top==size);
+int stack ::push(int n)
+{
 
+    if (isFull())
 
+        return 0;
 
+    ptr[top] = n;
 
- }
+    top++;
 
+    return 1;
+}
 
-  int stack ::isEmpty(){
+int stack ::pop(int &n)
+{
 
+    if (isEmpty())
 
+        return 0;
 
-	return (top==0);
+    top--;
 
+    n = ptr[top];
 
+    return 1;
+}
+void veiwContent(stack &s)
+{
 
+    for (int i = 0; i < s.top; i++)
+    {
 
- }
-
- int stack ::push (int n){
-
-	  if(isFull())
-
-	  return 0;
-
-	  ptr[top]=n;
-
-	  top++;
-
-	  return 1;
-
-
-
- }
- 
-
- int stack :: pop(int &n){
-
-
-  if(isEmpty())
-
-   return 0;
-
-   top--;
-
-   n=ptr[top];
-
-   return 1;
-
-
-
- }
-	
+        cout << "\n Element no (" << i + 1 << ") = " << s.ptr[i];
+    }
+    cout << "\n";
+}
