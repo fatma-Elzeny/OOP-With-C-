@@ -114,6 +114,10 @@ public:
     }
 
     friend complex operator+(float f, complex &c);
+
+     friend istream& operator>>(istream &in,complex& c);
+
+	   friend ostream& operator<<(ostream &out, complex& c);
 };
 
 complex add(complex c1, complex c2);
@@ -194,6 +198,10 @@ void main(void)
     float f = (float)com2;
 
     cout << "The casting of com2 is :" << f << endl;
+
+    cin>>com2;
+
+ cout<<com1<<com2<<com3;
 
     getch();
 }
@@ -337,3 +345,33 @@ void complex ::setAll(float r, float i)
 
     imag = i;
 }
+ istream& operator>>(istream& in , complex & c){
+
+	 cout<<"\n Enter real part :";
+
+	 in>>c.real;
+
+	 cout<<"\n Enter imag part : ";
+
+	 in>> c.imag;
+
+
+	 return in;
+
+
+
+   }
+
+   ostream& operator<<(ostream& out ,complex & c){
+
+	 if(c.imag<0){
+
+	  out<<c.real<<" - "<<-c.imag<<"i"<<endl;
+
+   }else{
+
+	  out<<c.real<<" + "<<c.imag<<"i"<<endl;
+   }
+	return out ;
+
+  }
