@@ -26,10 +26,16 @@ public:
     float getReal();
 
     float getImag();
-    
-    complex add (complex c1);
 
-	complex sub (complex c1);
+    complex add(complex c1);
+
+    complex sub(complex c1);
+
+    void setAll();
+
+    void setAll(float f);
+
+    void setAll(float r, float i);
 
     void print();
 };
@@ -48,9 +54,8 @@ void main(void)
     myComp1.setImag(2);
     resultComp = add(myComp1, myComp2);
     resultComp.print();
-    resultComp = sub(myComp1, myComp2);
+    resultComp = myComp1.sub(myComp2);
     resultComp.print();
-
     getch();
 }
 
@@ -149,31 +154,47 @@ complex substract(complex c1, complex c2)
 
     return temp;
 }
-complex complex :: add (complex c1){
+complex complex ::add(complex c1)
+{
 
+    complex temp;
 
+    temp.real = this->real + c1.real;
 
-	 complex temp ;
+    temp.imag = this->imag + c1.imag;
 
-	 temp.real=this->real+c1.real;
+    return temp;
+}
 
-	 temp.imag=this->imag+c1.imag;
+complex complex ::sub(complex c1)
+{
 
+    complex temp;
 
-	 return temp;
+    temp.real = this->real - c1.real;
 
-   }
+    temp.imag = this->imag - c1.imag;
 
-	 complex complex :: sub (complex c1 ){
+    return temp;
+}
 
+void complex ::setAll()
+{
 
+    real = imag = 0;
+}
+void complex ::setAll(float f)
+{
 
-	 complex temp ;
+    real = f;
 
-		 temp.real=this->real-c1.real;
+    imag = f;
+}
 
-		 temp.imag=this->imag-c1.imag;
+void complex ::setAll(float r, float i)
+{
 
-	 return temp;
+    real = r;
 
-   }
+    imag = i;
+}
