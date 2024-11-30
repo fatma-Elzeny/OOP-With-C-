@@ -216,6 +216,63 @@ public:
         LR.print();
     }
 };
+class Picture
+{
+
+private:
+    int cNum;
+
+    int rNum;
+
+    int lNum;
+
+    circle *pCircles;
+
+    Rect *pRects;
+
+    Line *pLines;
+
+public:
+    Picture()
+    {
+
+        cNum = 0;
+
+        rNum = 0;
+
+        lNum = 0;
+
+        pCircles = NULL;
+
+        pRects = NULL;
+
+        pLines = NULL;
+    }
+
+    Picture(int cn, int rn, int ln, circle *pC, Rect *pR, Line *pL)
+    {
+
+        cNum = cn;
+
+        rNum = rn;
+
+        lNum = ln;
+
+        pCircles = pC;
+
+        pRects = pR;
+
+        pLines = pL;
+    }
+
+    void setCircles(int, circle *);
+
+    void setRects(int, Rect *);
+
+    void setLines(int, Line *);
+
+    void print();
+};
 
 int main()
 {
@@ -231,6 +288,85 @@ int main()
     c1.print();
     r1.print();
     l1.print();
+
+    Picture myPic1;
+
+    circle cArr[3] = {circle(50, 50, 50), circle(200, 100, 100), circle(420, 50, 30)};
+
+    Rect rArr[2];
+
+    rArr[0] = Rect(30, 40, 170, 100);
+
+    point myP1(420, 50);
+
+    point myP2(500, 300);
+
+    rArr[1] = Rect(myP1, myP2);
+
+    Line *lArr;
+
+    lArr = new Line[2];
+
+    lArr[0] = Line(point(420, 50), point(300, 300));
+
+    lArr[1] = Line(40, 500, 500, 400);
+
+    myPic1.setCircles(3, cArr);
+
+    myPic1.setRects(2, rArr);
+
+    myPic1.setLines(2, lArr);
+
+    myPic1.print();
+
+    delete[] lArr;
+
     getch();
     return 0;
+}
+void Picture ::setCircles(int cn, circle *cptr)
+{
+
+    cNum = cn;
+
+    pCircles = cptr;
+}
+
+void Picture ::setRects(int rn, Rect *rptr)
+{
+
+    rNum = rn;
+
+    pRects = rptr;
+}
+
+void Picture ::setLines(int ln, Line *lptr)
+{
+
+    lNum = ln;
+
+    pLines = lptr;
+}
+
+void Picture ::print()
+{
+
+    int i;
+
+    for (i = 0; i < cNum; i++)
+    {
+
+        pCircles[i].print();
+    }
+
+    for (i = 0; i < rNum; i++)
+    {
+
+        pRects[i].print();
+    }
+    for (i = 0; i < lNum; i++)
+    {
+
+        pLines[i].print();
+    }
 }
