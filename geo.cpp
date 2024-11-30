@@ -223,6 +223,14 @@ int main()
     p1.print();
     p1(-5, 132);
     p1.print();
+
+    Circle c1(250, 150, 100);
+    Rect r1(10, 100, 90, 350);
+    Line l1(30, 100, 350, 400);
+
+    c1.print();
+    r1.print();
+    l1.print();
     getch();
     return 0;
 }
