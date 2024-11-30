@@ -128,6 +128,47 @@ public:
         end.print();
     }
 };
+class circle
+{
+
+private:
+    point center;
+
+    int rad;
+
+public:
+    circle() : center(0)
+    {
+
+        rad = 0;
+
+        cout << "\n circle default constructor is calling" << endl;
+    }
+
+    circle(int x1, int y1, int r) : center(x1, y1)
+    {
+
+        rad = r;
+
+        cout << "\n circle with 3 parameters constructor is calling" << endl;
+    }
+
+    ~circle()
+    {
+
+        cout << "\n circle destructor is calling" << endl;
+    }
+
+    void print()
+    {
+
+        cout << "\ncenter:";
+
+        center.print();
+
+        cout << "\n Radius = " << rad << endl;
+    }
+};
 
 int main()
 {
