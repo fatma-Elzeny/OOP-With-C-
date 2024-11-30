@@ -82,6 +82,53 @@ public:
         return y;
     }
 };
+
+class Line
+{
+
+private:
+    point start;
+
+    point end;
+
+public:
+    Line() : start(), end()
+    {
+
+        cout << "\n Line default constructor is calling" << endl;
+    }
+
+    Line(int x1, int y1, int x2, int y2) : start(x1, y1), end(x2, y2)
+    {
+
+        cout << "\n Line with 4 parameters constructor is calling" << endl;
+    }
+
+    Line(point p1, point p2)
+    {
+
+        start = p1;
+        end = p2;
+    }
+
+    ~Line()
+    {
+        cout << "\n Line destructor is calling" << endl;
+    }
+
+    void print()
+    {
+
+        cout << "\nStart :";
+
+        start.print();
+
+        cout << "\nEnd :";
+
+        end.print();
+    }
+};
+
 int main()
 {
     Point p1(12, 20);
