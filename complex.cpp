@@ -115,9 +115,9 @@ public:
 
     friend complex operator+(float f, complex &c);
 
-     friend istream& operator>>(istream &in,complex& c);
+    friend istream &operator>>(istream &in, complex &c);
 
-	   friend ostream& operator<<(ostream &out, complex& c);
+    friend ostream &operator<<(ostream &out, complex &c);
 };
 
 complex add(complex c1, complex c2);
@@ -199,9 +199,33 @@ void main(void)
 
     cout << "The casting of com2 is :" << f << endl;
 
-    cin>>com2;
+    cin >> com2;
 
- cout<<com1<<com2<<com3;
+    cout << com1 << com2 << com3;
+
+    int i;
+
+    complex arr[3] = {complex(2), complex(), complex(5, 7)};
+
+    for (i = 0; i < 3; i++)
+
+        arr[i].print();
+
+    int n;
+
+    complex *cptr;
+
+    cin >> n;
+
+    cptr = new complex[n];
+
+    for (i = 0; i < n; i++)
+
+        cin >> cptr[i];
+
+    for (i = 0; i < n; i++)
+
+        cptr[i].print();
 
     getch();
 }
@@ -345,33 +369,32 @@ void complex ::setAll(float r, float i)
 
     imag = i;
 }
- istream& operator>>(istream& in , complex & c){
+istream &operator>>(istream &in, complex &c)
+{
 
-	 cout<<"\n Enter real part :";
+    cout << "\n Enter real part :";
 
-	 in>>c.real;
+    in >> c.real;
 
-	 cout<<"\n Enter imag part : ";
+    cout << "\n Enter imag part : ";
 
-	 in>> c.imag;
+    in >> c.imag;
 
+    return in;
+}
 
-	 return in;
+ostream &operator<<(ostream &out, complex &c)
+{
 
+    if (c.imag < 0)
+    {
 
+        out << c.real << " - " << -c.imag << "i" << endl;
+    }
+    else
+    {
 
-   }
-
-   ostream& operator<<(ostream& out ,complex & c){
-
-	 if(c.imag<0){
-
-	  out<<c.real<<" - "<<-c.imag<<"i"<<endl;
-
-   }else{
-
-	  out<<c.real<<" + "<<c.imag<<"i"<<endl;
-   }
-	return out ;
-
-  }
+        out << c.real << " + " << c.imag << "i" << endl;
+    }
+    return out;
+}
