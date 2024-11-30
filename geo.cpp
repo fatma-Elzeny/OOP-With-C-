@@ -170,6 +170,53 @@ public:
     }
 };
 
+class Rect
+{
+
+private:
+    point UL;
+
+    point LR;
+
+public:
+    Rect() : UL(), LR()
+    {
+
+        cout << "\n Rect default constructor is calling" << endl;
+    }
+
+    Rect(int x1, int y1, int x2, int y2) : UL(x1, y1), LR(x2, y2)
+    {
+
+        cout << "\n Rect with 4 parameters constructor is calling" << endl;
+    }
+
+    Rect(point p1, point p2)
+    {
+
+        UL = p1;
+        LR = p2;
+    }
+
+    ~Rect()
+    {
+
+        cout << "\n circle destructor is calling" << endl;
+    }
+
+    void print()
+    {
+
+        cout << "\nUpper Left:";
+
+        UL.print();
+
+        cout << "\nLower Right:";
+
+        LR.print();
+    }
+};
+
 int main()
 {
     Point p1(12, 20);
